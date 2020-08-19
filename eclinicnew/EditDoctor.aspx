@@ -11,19 +11,11 @@
             </td>
         </tr>
         <tr>
-            <td class="modal-sm" style="width: 110px">Imię</td>
+            <td class="modal-sm" style="width: 110px">Imię i nazwisko</td>
             <td>
-                <asp:TextBox ID="tbDocFname" runat="server" Width="250px"></asp:TextBox>
+                <asp:TextBox ID="tbDocFullName" runat="server" Width="250px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                    ErrorMessage="Podaj imię" Display="Dynamic" ControlToValidate="tbDocFname">*</asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td class="modal-sm" style="width: 110px">Nazwisko</td>
-            <td>
-                <asp:TextBox ID="tbDocLname" runat="server" Width="250px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-                    ErrorMessage="Podaj nazwisko" ControlToValidate="tbDocLname" Display="Dynamic">*</asp:RequiredFieldValidator>
+                    ErrorMessage="Podaj imię i nazwisko" Display="Dynamic" ControlToValidate="tbDocFullName">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>

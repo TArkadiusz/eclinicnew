@@ -42,15 +42,14 @@ namespace eclinicnew
                 {
                     conn.Open();
                     String sql = @"INSERT INTO doctor
-                                (login, password, fname, lname, email)
+                                (login, password, full_name, email)
                                 VALUES
-                                (@login, @pass, @fname, @lname, @email)
+                                (@login, @pass, @full_name, @email)
                                 ";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.Add("@login", MySqlDbType.VarChar, 50).Value = tbDocLogin.Text;
                     cmd.Parameters.Add("@pass", MySqlDbType.VarChar, 255).Value = hashPass;
-                    cmd.Parameters.Add("@fname", MySqlDbType.VarChar, 50).Value = tbDocFname.Text;
-                    cmd.Parameters.Add("@lname", MySqlDbType.VarChar, 50).Value = tbDocLname.Text;
+                    cmd.Parameters.Add("@full_name", MySqlDbType.VarChar, 50).Value = tbDocFullName.Text;
                     cmd.Parameters.Add("@email", MySqlDbType.VarChar, 255).Value = tbDocEmail.Text;
 
 
@@ -59,8 +58,7 @@ namespace eclinicnew
 
                     tbDocLogin.Text = "";
                     tbDocPass.Text = "";
-                    tbDocFname.Text = "";
-                    tbDocLname.Text = "";
+                    tbDocFullName.Text = "dr ";
                     tbDocEmail.Text = "";
                     
                 }
@@ -77,7 +75,6 @@ namespace eclinicnew
             RequiredFieldValidator1.Enabled = false;
             RequiredFieldValidator6.Enabled = false;
             RequiredFieldValidator2.Enabled = false;
-            RequiredFieldValidator3.Enabled = false;
             RequiredFieldValidator4.Enabled = false;
             RegularExpressionValidator1.Enabled = false;
             Response.Redirect("~/PickDoctor");

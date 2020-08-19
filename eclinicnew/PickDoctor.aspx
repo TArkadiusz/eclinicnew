@@ -5,8 +5,7 @@
         <AlternatingRowStyle BackColor="White" ForeColor="#003366" />
         <Columns>
             <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-            <asp:BoundField DataField="fname" HeaderText="Imię" SortExpression="fname" />
-            <asp:BoundField DataField="lname" HeaderText="Nazwisko" SortExpression="lname" />
+            <asp:BoundField DataField="full_name" HeaderText="Imię i nazwisko" SortExpression="full_name" />
             <asp:TemplateField HeaderText="E-mail" SortExpression="email">
                 <ItemTemplate>
                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("email", "mailto:{0}") %>' Text='<%# Eval("email") %>'></asp:HyperLink>

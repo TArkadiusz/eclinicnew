@@ -30,39 +30,45 @@ namespace eclinicnew
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            tbEditLogin.Text = Request.QueryString["Parameter"].ToString();
+            lblLogin.Text = Request.QueryString["Parameter"].ToString();
 
             try
             {
                 String cs = "Server=127.0.0.1; Port=3306; Database=eclinic; Uid=root; Pwd=root";
-                //odczyt z tablicy
-                using (MySqlConnection conn = new MySqlConnection(cs))
-                {
-                    conn.Open();
-                    String sql = "SELECT * FROM user WHERE login='{0}'";
-                    sql = String.Format(sql, tbEditLogin.Text);
-                    MySqlDataAdapter adapter = new MySqlDataAdapter();
-                    adapter.SelectCommand = new MySqlCommand(sql, conn);
-                    DataTable table = new DataTable();
-                    adapter.Fill(table);
-                    if (table.Rows.Count == 0)
-                    {
-                        Response.Redirect("VisitUser.aspx?Parameter=" + tbEditLogin.Text);
-                    }
-                    else
-                    {
-                        MySqlCommand cmd = new MySqlCommand(sql, conn);
-                        MySqlDataReader reader = cmd.ExecuteReader();
 
-                        reader.Read();
-                        //tbEditLogin.Text = reader["login"].ToString();
-                        tbHiddenId.Value = reader["id"].ToString();
-                        tbEditFname.Text = reader["fname"].ToString();
-                        tbEditLname.Text = reader["lname"].ToString();
-                        tbEditEmail.Text = reader["email"].ToString();
-                        tbEditPesel.Text = reader["pesel"].ToString();
+                if (!Page.IsPostBack)
+                {
+                    //odczyt z tablicy
+                    using (MySqlConnection conn = new MySqlConnection(cs))
+                    {
+                        conn.Open();
+                        String sql = "SELECT * FROM user WHERE login='{0}'";
+                        sql = String.Format(sql, lblLogin.Text);
+                        MySqlDataAdapter adapter = new MySqlDataAdapter();
+                        adapter.SelectCommand = new MySqlCommand(sql, conn);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        if (table.Rows.Count == 0)
+                        {
+                            Response.Redirect("VisitUser.aspx?Parameter=" + lblLogin.Text);
+                        }
+                        else
+                        {
+                            MySqlCommand cmd = new MySqlCommand(sql, conn);
+                            MySqlDataReader reader = cmd.ExecuteReader();
+
+                            reader.Read();
+
+                            tbHiddenId.Value = reader["id"].ToString();
+                            tbEditLogin.Text = reader["login"].ToString();
+                            tbEditFname.Text = reader["fname"].ToString();
+                            tbEditLname.Text = reader["lname"].ToString();
+                            tbEditEmail.Text = reader["email"].ToString();
+                            tbEditPesel.Text = reader["pesel"].ToString();
+                        }
                     }
                 }
+                
             }
             catch (Exception)
             {
@@ -72,6 +78,7 @@ namespace eclinicnew
 
         protected void btnOK_Click(object sender, EventArgs e)
         {
+            lblLogin.Text = tbEditLogin.Text;
             try
             {
                 String cs = "Server=127.0.0.1; Port=3306; Database=eclinic; Uid=root; Pwd=root";
@@ -88,7 +95,7 @@ namespace eclinicnew
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.ExecuteNonQuery();
-                    Response.Redirect("VisitUser.aspx?Parameter=" + tbEditLogin.Text);
+                    Response.Redirect("VisitUser.aspx?Parameter=" + lblLogin.Text);
                 }
 
             }
@@ -101,7 +108,7 @@ namespace eclinicnew
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("VisitUser.aspx?Parameter=" + tbEditLogin.Text);
+            Response.Redirect("VisitUser.aspx?Parameter=" + lblLogin.Text);
         }
     }
 }

@@ -1,14 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditVisitDoc.aspx.cs" Inherits="eclinicnew.EditVisitDoc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Edycja statusu zgłoszenia</h3>
+    <h3>Edycja statusu wizyty</h3>
+    <asp:Label ID="lblLogin" runat="server" Text="" Font-Size="Large" Font-Bold="True"></asp:Label>
     <table border="0" class="table">
         <tr>
             <td style="width: 250px">Zmiana statusu</td>
             <td>
-                <asp:DropDownList ID="ddlStatus" runat="server">
-                    <asp:ListItem Value="0">---</asp:ListItem>
-                    <asp:ListItem Value="1">AKCEPTACJA</asp:ListItem>
-                    <asp:ListItem Value="-1">ANULOWANO</asp:ListItem>
+                <asp:DropDownList ID="ddlStatus" runat="server" Height="16px" Width="150px">
+                    <asp:ListItem>AKCEPTACJA</asp:ListItem>
+                    <asp:ListItem>ANULOWANE</asp:ListItem>
+                    <asp:ListItem>ZAKOŃCZONE</asp:ListItem>
                 </asp:DropDownList>
             </td>
         </tr>

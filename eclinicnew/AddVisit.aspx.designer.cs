@@ -51,6 +51,15 @@ namespace eclinicnew
         protected global::System.Web.UI.WebControls.Label lblPesel;
 
         /// <summary>
+        /// lblEmailUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmailUser;
+
+        /// <summary>
         /// ddlDoctor control.
         /// </summary>
         /// <remarks>
@@ -60,22 +69,31 @@ namespace eclinicnew
         protected global::System.Web.UI.WebControls.DropDownList ddlDoctor;
 
         /// <summary>
-        /// lblEmail control.
+        /// SqlDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
-        /// tbDateTime control.
+        /// tbDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbDateTime;
+        protected global::System.Web.UI.WebControls.TextBox tbDate;
+
+        /// <summary>
+        /// tbTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbTime;
 
         /// <summary>
         /// tbDescr control.
@@ -103,6 +121,33 @@ namespace eclinicnew
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblResult;
+
+        /// <summary>
+        /// hfUserId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfUserId;
+
+        /// <summary>
+        /// hfDocId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfDocId;
+
+        /// <summary>
+        /// hfDocEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfDocEmail;
 
         /// <summary>
         /// btnOK control.

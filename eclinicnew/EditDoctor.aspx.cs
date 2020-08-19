@@ -50,8 +50,7 @@ namespace eclinicnew
 
                                         reader.Read();
                                         tbDocLogin.Text = reader["login"].ToString();
-                                        tbDocFname.Text = reader["fname"].ToString();
-                                        tbDocLname.Text = reader["lname"].ToString();
+                                        tbDocFullName.Text = reader["full_name"].ToString();
                                         tbDocEmail.Text = reader["email"].ToString();
                                         tbHiddenId.Value = rowId.ToString();
                                     }
@@ -78,9 +77,9 @@ namespace eclinicnew
 
                 
                 String sql = @"UPDATE doctor SET 
-                                login='{0}', fname='{1}', lname='{2}', email='{3}' WHERE id='{4}'";
-                sql = String.Format(sql, tbDocLogin.Text, tbDocFname.Text,
-                                    tbDocLname.Text, tbDocEmail.Text, Convert.ToInt32(tbHiddenId.Value));
+                                login='{0}', full_name='{1}', email='{2}' WHERE id='{3}'";
+                sql = String.Format(sql, tbDocLogin.Text, tbDocFullName.Text,
+                                    tbDocEmail.Text, Convert.ToInt32(tbHiddenId.Value));
                 using (MySqlConnection conn = new MySqlConnection(cs))
                     {
                         conn.Open();
@@ -101,7 +100,6 @@ namespace eclinicnew
         {
             RequiredFieldValidator1.Enabled = false;
             RequiredFieldValidator2.Enabled = false;
-            RequiredFieldValidator3.Enabled = false;
             RequiredFieldValidator4.Enabled = false;
             RegularExpressionValidator1.Enabled = false;
             Response.Redirect("~/PickDoctor");

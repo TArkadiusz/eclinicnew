@@ -5,7 +5,7 @@
     <h3 style="font-family: Complex"><b>Nowy lekarz</b></h3>
     <table class="table">
         <tr>
-            <td class="modal-sm" style="width: 110px">Login</td>
+            <td class="modal-sm" style="width: 147px">Login</td>
             <td>
                 <asp:TextBox ID="tbDocLogin" runat="server" Width="250px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
@@ -13,7 +13,7 @@
             </td>
         </tr>
         <tr>
-            <td class="modal-sm" style="width: 110px">Hasło</td>
+            <td class="modal-sm" style="width: 147px">Hasło</td>
             <td>
                 <asp:TextBox ID="tbDocPass" runat="server" Width="250px" TextMode="Password"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
@@ -21,23 +21,15 @@
             </td>
         </tr>
         <tr>
-            <td class="modal-sm" style="width: 110px">Imię</td>
+            <td class="modal-sm" style="width: 147px">Imię i nazwisko</td>
             <td>
-                <asp:TextBox ID="tbDocFname" runat="server" Width="250px"></asp:TextBox>
+                <asp:TextBox ID="tbDocFullName" runat="server" Width="250px">dr </asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                    ErrorMessage="Podaj imię" Display="Dynamic" ControlToValidate="tbDocFname">*</asp:RequiredFieldValidator>
+                    ErrorMessage="Podaj imię i nazwisko" Display="Dynamic" ControlToValidate="tbDocFullName">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
-            <td class="modal-sm" style="width: 110px">Nazwisko</td>
-            <td>
-                <asp:TextBox ID="tbDocLname" runat="server" Width="250px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-                    ErrorMessage="Podaj nazwisko" ControlToValidate="tbDocLname" Display="Dynamic">*</asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td class="modal-sm" style="width: 110px">E-mail</td>
+            <td class="modal-sm" style="width: 147px">E-mail</td>
             <td>
                 <asp:TextBox ID="tbDocEmail" runat="server" Width="250px"></asp:TextBox>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
@@ -48,7 +40,7 @@
             </td>
         </tr>
         <tr>
-            <td class="modal-sm" style="width: 110px">
+            <td class="modal-sm" style="width: 147px">
                 <asp:Button ID="btnOK" runat="server" Text="Zapisz" Font-Bold="True" Font-Names="Complex" Width="100px" OnClick="btnOK_Click" />
             </td>
             <td>

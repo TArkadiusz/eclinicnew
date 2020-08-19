@@ -8,12 +8,17 @@
             <asp:BoundField DataField="fname" HeaderText="Imię" SortExpression="fname" />
             <asp:BoundField DataField="lname" HeaderText="Nazwisko" SortExpression="lname" />
             <asp:BoundField DataField="pesel" HeaderText="PESEL" SortExpression="pesel" />
-            <asp:TemplateField HeaderText="E-mail" SortExpression="email">
+            <asp:TemplateField HeaderText="E-mail" SortExpression="email_user">
                 <ItemTemplate>
-                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("email", "mailto:{0}") %>' Text='<%# Eval("email") %>'></asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("email_user", "mailto:{0}") %>' Text='<%# Eval("email_user") %>'></asp:HyperLink>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="doctor" HeaderText="Lekarz" SortExpression="doctor" DataFormatString="" />
+            <asp:TemplateField HeaderText="E-mail" SortExpression="email_doc">
+                <ItemTemplate>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("email_doc", "mailto:{0}") %>' Text='<%# Eval("email_doc") %>'></asp:HyperLink>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="visit_date" HeaderText="Data wizyty" SortExpression="visit_date" />
             <asp:BoundField DataField="descr" HeaderText="Opis" SortExpression="descr" />
             <asp:ImageField HeaderText="Obraz" NullDisplayText="BRAK" DataImageUrlField="image" 
@@ -43,8 +48,10 @@
         <SortedDescendingCellStyle BackColor="#FFFDF8" />
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="server=127.0.0.1;user id=root;password=root;database=eclinic;persistsecurityinfo=True" ProviderName="MySql.Data.MySqlClient" 
-        SelectCommand="SELECT id, fname, lname, pesel, email, doctor, visit_date, descr, image, status FROM visits "></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource" runat="server" 
+        ConnectionString="server=127.0.0.1;user id=root;password=root;database=eclinic;persistsecurityinfo=True" 
+        ProviderName="MySql.Data.MySqlClient" 
+        SelectCommand="SELECT id, fname, lname, pesel, email_user, doctor, email_doc, visit_date, descr, image, status FROM visits "></asp:SqlDataSource>
     <table class="table">
         <tr>
             <td class="modal-sm" style="width: 200px">

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddVisit.aspx.cs" Inherits="eclinicnew.AddVisit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js">
     </script>
 
@@ -31,15 +31,21 @@
             </td>
         </tr>
         <tr>
-            <td class="modal-sm" style="width: 250px">Lekarz</td>
+            <td class="modal-sm" style="width: 250px">E-mail</td>
             <td>
-                <asp:DropDownList ID="ddlDoctor" runat="server"></asp:DropDownList>
+                <asp:Label ID="lblEmailUser" runat="server" Text=""></asp:Label>
             </td>
         </tr>
         <tr>
-            <td class="modal-sm" style="width: 250px">E-mail</td>
+            <td class="modal-sm" style="width: 250px">Lekarz</td>
             <td>
-                <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
+                <asp:DropDownList ID="ddlDoctor" runat="server" DataSourceID="SqlDataSource1" DataTextField="full_name" TabIndex="0">
+                    <asp:ListItem Selected="True"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:eclinicConnectionString %>" 
+                    ProviderName="<%$ ConnectionStrings:eclinicConnectionString.ProviderName %>" 
+                    SelectCommand="SELECT full_name FROM doctor"></asp:SqlDataSource>
             </td>
         </tr>
         <tr>
@@ -47,7 +53,7 @@
                 Data wizyty
             </td>
             <td>
-                <asp:TextBox ID="tbDateTime" runat="server" TextMode="DateTime" Font-Bold="True" Width="200px"></asp:TextBox>
+                <asp:TextBox ID="tbDate" runat="server" TextMode="Date"></asp:TextBox><asp:TextBox ID="tbTime" runat="server" TextMode="Time"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -67,6 +73,21 @@
         <tr>
             <td colspan="2">
                 <asp:Label ID="lblResult" runat="server" Font-Bold="True"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <asp:HiddenField ID="hfUserId" runat="server" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <asp:HiddenField ID="hfDocId" runat="server" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <asp:HiddenField ID="hfDocEmail" runat="server" />
             </td>
         </tr>
         <tr>

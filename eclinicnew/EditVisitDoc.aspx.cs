@@ -14,6 +14,7 @@ namespace eclinicnew
         String cs = "Server=127.0.0.1; Port=3306; Database=eclinic; Uid=root; Pwd=root";
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblLogin.Text = Request.QueryString["Parameter"].ToString();
             if (!Page.IsPostBack)
             {
                 if (Request.Params["id"] != null)
@@ -40,6 +41,9 @@ namespace eclinicnew
                             }
                             else
                             {
+                                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                                MySqlDataReader reader = cmd.ExecuteReader();
+
                                 tbHiddenId.Value = rowId.ToString();
                             }
                         }
@@ -54,28 +58,29 @@ namespace eclinicnew
 
         protected void btnOK_Click(object sender, EventArgs e)
         {
-            int status = Convert.ToInt32(ddlStatus.SelectedValue);
-            if (status == 0)
+            try
             {
-                lblStatus.Text = "Wybierz status";
-            }
-            else
-            {
-                String sql = "UPDATE visits SET status={0} WHERE id={1}";
-                sql = String.Format(sql, status, Convert.ToInt32(tbHiddenId.Value));
+                String sql = @"UPDATE visits SET status='{0}' WHERE id='{1}'";
+                sql = String.Format(sql, ddlStatus.SelectedItem, Convert.ToInt32(tbHiddenId.Value));
                 using (MySqlConnection conn = new MySqlConnection(cs))
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.ExecuteNonQuery();
-                    Response.Redirect("~/VisitDoctor");
+                    Response.Redirect("VisitDoctor.aspx?Parameter=" + lblLogin.Text);
                 }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         protected void btnClose_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/VisitDoctor");
+            Response.Redirect("VisitDoctor.aspx?Parameter=" + lblLogin.Text);
         }
     }
 }

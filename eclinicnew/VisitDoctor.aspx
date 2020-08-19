@@ -2,18 +2,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Twoje wizyty</h3>
     <asp:Label ID="lblLogin" runat="server" Text="" Font-Size="Large" Font-Bold="True"></asp:Label>
-    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" CellSpacing="5" Width="100%" Font-Bold="False" ForeColor="#333333">
+    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" CellSpacing="5" Width="100%" Font-Bold="False" ForeColor="#333333" DataKeyNames="id" DataSourceID="SqlDataSource">
         <AlternatingRowStyle BackColor="White" ForeColor="#003366" />
         <Columns>
             <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
             <asp:BoundField DataField="fname" HeaderText="Imię" SortExpression="fname" />
             <asp:BoundField DataField="lname" HeaderText="Nazwisko" SortExpression="lname" />
-            <asp:BoundField DataField="pesel" HeaderText="PESEL" SortExpression="pesel" />
-            <asp:TemplateField HeaderText="E-mail" SortExpression="email">
+            <asp:TemplateField HeaderText="E-mail" SortExpression="email_user">
                 <ItemTemplate>
-                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("email", "mailto:{0}") %>' Text='<%# Eval("email") %>'></asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("email_user", "mailto:{0}") %>' Text='<%# Eval("email_user") %>'></asp:HyperLink>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:BoundField DataField="pesel" HeaderText="PESEL" SortExpression="pesel" />
             <asp:BoundField DataField="visit_date" HeaderText="Data wizyty" SortExpression="visit_date" />
             <asp:BoundField DataField="descr" HeaderText="Opis" SortExpression="descr" />
             <asp:ImageField HeaderText="Obraz" NullDisplayText="BRAK" DataImageUrlField="image" 
@@ -34,8 +34,11 @@
         <SortedDescendingCellStyle BackColor="#FFFDF8" />
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="server=127.0.0.1;user id=root;password=root;database=eclinic;persistsecurityinfo=True" ProviderName="MySql.Data.MySqlClient" 
-        SelectCommand="SELECT fname, lname, visit_date, descr, image, status FROM visits "></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource" runat="server" 
+        ConnectionString="server=127.0.0.1;user id=root;password=root;database=eclinic;persistsecurityinfo=True" 
+        ProviderName="MySql.Data.MySqlClient" >
+    </asp:SqlDataSource>
+    <asp:HiddenField ID="hfId" runat="server" />
     <table class="table">
         <tr>
             <td class="modal-sm" style="width: 250px">
