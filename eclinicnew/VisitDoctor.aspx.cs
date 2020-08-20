@@ -54,6 +54,8 @@ namespace eclinicnew
             LoadDataDoctor();
             SqlDataSource.SelectCommand = 
                 String.Format("SELECT id, fname, lname, email_user, pesel, visit_date, descr, image, status FROM visits WHERE doctor_id='{0}'", hfId.Value);
+
+            
         }
 
         protected void btnEditPass_Click(object sender, EventArgs e)

@@ -14,7 +14,6 @@ namespace eclinicnew
         String cs = "Server=127.0.0.1; Port=3306; Database=eclinic; Uid=root; Pwd=root";
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblLogin.Text = Request.QueryString["Parameter"].ToString();
             if (!Page.IsPostBack)
             {
                 if (Request.Params["id"] != null)
@@ -53,6 +52,19 @@ namespace eclinicnew
                 {
                     Response.Redirect("~/VisitDoctor.aspx");
                 }
+            }
+        }
+
+        private void LoadLogin()
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
